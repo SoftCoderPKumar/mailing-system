@@ -27,7 +27,7 @@ This is a mailing system where we can add email account SMTP, any one can send m
 Clone the repo and install the dependencies.
 
 ```bash
-git clone https://github.com/SonyPappu/appointment-booking-system.git
+git clone https://github.com/SoftCoderPKumar/mailing-system.git
 cd mailing-system
 ```
 

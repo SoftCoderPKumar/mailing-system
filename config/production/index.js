@@ -7,11 +7,11 @@
 const config = {
     site_config: {
         app_name: 'mailing system',
-        base_url: 'https://dr-appointment-booking.herokuapp.com/',
+        base_url: 'https://mailing-system.onrender.com/',
         host: '0.0.0.0',
         port: process.env.PORT || 4200,
         env: 'production', // [local,production] default is production
-        site_url: 'https://dr-appointment-booking.herokuapp.com/',
+        site_url: 'https://mailing-system.onrender.com/',
         isHttps: false
     },
     appLanguage: {
