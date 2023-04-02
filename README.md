@@ -49,10 +49,17 @@ To start the node server, run the following
 ```bash
 npm start
 ```
+## local
 
 Open [http://localhost:4200](http://localhost:4200) and take a look around.
 
 Swagger[http://localhost:4200/assigment-docs/](http://localhost:4200/assigment-docs/)find API details(documentation)
+
+## Prod
+
+Open [https://mailing-system.onrender.com](https://mailing-system.onrender.com) and take a look around.
+
+Swagger[https://mailing-system.onrender.com/assigment-docs/](https://mailing-system.onrender.com/assigment-docs/)find API details(documentation)
 
 
 # mailing-system
