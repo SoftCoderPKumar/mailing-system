@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "description": " Input data either normal `without encryption` or secure `encrypted`,isEncoded : 1 to show encryption for input data { default: 0} - To send normal input use parameters provided with each and every api, - To send encrypted input use data parameter with encrypted value of all parameters provided with each and every api. ",
-        "version": "2.0.1",
+        "version": "1.0.0",
         "title": " Assignment ",
         "termsOfService": "http://swagger.io/terms/",
         "contact": {
@@ -11,7 +11,7 @@
             "email": "pappukumar2190@gmail.com"
         }
     },
-    "host": "localhost:4200/",
+    "host": "mailing-system.onrender.com/",
     "tags": [{
             "name": "Common API",
             "description": "All app authentication related action.",
@@ -21,8 +21,8 @@
             }
         },
         {
-            "name": "Bokking API",
-            "description": "All app Bokking related action.",
+            "name": "Mailing API",
+            "description": "All Mailing related action.",
             "externalDocs": {
                 "description": "Find out more",
                 "url": "http://swagger.io"
@@ -57,6 +57,263 @@
                         "description": "success",
                         "schema": {
                             "$ref": "#/definitions/get-api-tokenResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized access",
+                        "schema": {
+                            "$ref": "#/definitions/parameters/commonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/mailing/get-email-account": {
+            "get": {
+                "tags": [
+                    "Mailing API"
+                ],
+                "summary": "Get Email Account.",
+                "description": "Get Email Account.",
+                "operationId": "get-email-account",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": {
+                    "$ref": "#/definitions/produces"
+                },
+                "parameters": [{
+                        "$ref": "#/definitions/parameters/apiToken"
+                    },
+                    {
+                        "$ref": "#/definitions/parameters/platform"
+                    },
+                    {
+                        "$ref": "#/definitions/parameters/version"
+                    },
+                    {
+                        "in": "query",
+                        "name": "emailId",
+                        "description": "Enter account email id.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/get-email-accountResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized access",
+                        "schema": {
+                            "$ref": "#/definitions/parameters/commonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/mailing/create-email-account": {
+            "post": {
+                "tags": [
+                    "Mailing API"
+                ],
+                "summary": "Create Email Account.",
+                "description": "Create Email Account.",
+                "operationId": "create-email-account",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": {
+                    "$ref": "#/definitions/produces"
+                },
+                "parameters": [{
+                        "$ref": "#/definitions/parameters/apiToken"
+                    },
+                    {
+                        "$ref": "#/definitions/parameters/platform"
+                    },
+                    {
+                        "$ref": "#/definitions/parameters/version"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "from_name",
+                        "description": "Enter from name.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "from_email",
+                        "description": "Enter from email.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "user_name",
+                        "description": "Enter from userName.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "password",
+                        "description": "Enter password.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "smtp_host",
+                        "description": "Enter smtp host.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "smtp_port",
+                        "description": "Enter smtp port.",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "smtp_type",
+                        "description": "Enter smtp type.",
+                        "required": true,
+                        "type": "string",
+                        "enum": ["ssl", "tls", "none"]
+                    },
+                    {
+                        "in": "formData",
+                        "name": "msg_per_day",
+                        "description": "Enter msg per day count.",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "msg_time_gap",
+                        "description": "Enter msg time gap in sec.",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "diff_reply_address",
+                        "description": "Is diff reply Address.",
+                        "required": true,
+                        "type": "string",
+                        "enum": ["Y", "N"]
+                    },
+                    {
+                        "in": "formData",
+                        "name": "imap_reply_mail",
+                        "description": "Is imap reply mail.",
+                        "required": true,
+                        "type": "string",
+                        "enum": ["Y", "N"]
+                    },
+                    {
+                        "in": "formData",
+                        "name": "imap_host",
+                        "description": "Enter imap host.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "imap_port",
+                        "description": "Enter imap port.",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "imap_type",
+                        "description": "Enter imap type.",
+                        "required": true,
+                        "type": "string",
+                        "enum": ["ssl", "tls", "none"]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/create-email-accountResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized access",
+                        "schema": {
+                            "$ref": "#/definitions/parameters/commonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/mailing/send-mail": {
+            "post": {
+                "tags": [
+                    "Mailing API"
+                ],
+                "summary": "Send Email.",
+                "description": "Send Email.",
+                "operationId": "send-email",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": {
+                    "$ref": "#/definitions/produces"
+                },
+                "parameters": [{
+                        "$ref": "#/definitions/parameters/apiToken"
+                    },
+                    {
+                        "$ref": "#/definitions/parameters/platform"
+                    },
+                    {
+                        "$ref": "#/definitions/parameters/version"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "toEmails",
+                        "description": "Enter TO emails.",
+                        "required": true,
+                        "type": "array"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "sendar_email",
+                        "description": "Enter sender email.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "subject",
+                        "description": "Enter email subject.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "body",
+                        "description": "Enter email body.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/send-mailResponse"
                         }
                     },
                     "401": {
@@ -155,6 +412,89 @@
                     "properties": {}
                 }
             }
+        },
+        "get-email-accountResponse": {
+            "type": "object",
+            "example": {
+                "status": true,
+                "msg": "Get email account.",
+                "res": {
+                    "id": 6,
+                    "from_name": "Pappu Kumar",
+                    "from_email": "pappu.setrosoft@gmail.com",
+                    "user_name": "pappu.setrosoft@gmail.com",
+                    "password": "bdepataairbmdkid",
+                    "smtp_host": "smtp.gmail.com",
+                    "smtp_port": 587,
+                    "smtp_type": "tls",
+                    "msg_per_day": 200,
+                    "msg_time_gap": 10,
+                    "diff_reply_address": "N",
+                    "imap_reply_mail": "N",
+                    "imap_host": "smtp.gmail.com",
+                    "imap_port": 587,
+                    "imap_type": "tls"
+                }
+            },
+            "properties": {
+                "status": {
+                    "type": "boolean",
+                    "description": true
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "Get email account."
+                },
+                "res": {
+                    "type": "object",
+                    "properties": {}
+                }
+            }
+        },
+        "create-email-accountResponse": {
+            "type": "object",
+            "example": {
+                "status": true,
+                "msg": "Email account created successfuly.",
+                "res": null
+            },
+            "properties": {
+                "status": {
+                    "type": "boolean",
+                    "description": true
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "Email account created successfuly."
+                },
+                "res": {
+                    "type": "string",
+                    "properties": null
+                }
+            }
+        },
+        "send-mailResponse": {
+            "type": "object",
+            "example": {
+                "status": true,
+                "msg": "Email has send successfully.",
+                "res": null
+            },
+            "properties": {
+                "status": {
+                    "type": "boolean",
+                    "description": true
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "Email has send successfully."
+                },
+                "res": {
+                    "type": "string",
+                    "properties": null
+                }
+            }
         }
+
     }
 }
