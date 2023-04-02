@@ -1,0 +1,160 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": " Input data either normal `without encryption` or secure `encrypted`,isEncoded : 1 to show encryption for input data { default: 0} - To send normal input use parameters provided with each and every api, - To send encrypted input use data parameter with encrypted value of all parameters provided with each and every api. ",
+        "version": "2.0.1",
+        "title": " Assignment ",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "API Support",
+            "url": "http://www.xyz.com/",
+            "email": "pappukumar2190@gmail.com"
+        }
+    },
+    "host": "localhost:4200/",
+    "tags": [{
+            "name": "Common API",
+            "description": "All app authentication related action.",
+            "externalDocs": {
+                "description": "Find out more",
+                "url": "http://swagger.io"
+            }
+        },
+        {
+            "name": "Bokking API",
+            "description": "All app Bokking related action.",
+            "externalDocs": {
+                "description": "Find out more",
+                "url": "http://swagger.io"
+            }
+        }
+    ],
+    "externalDocs": {
+        "description": "Find out more about mailing system ",
+        "url": "http://xyz.com"
+    },
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "paths": {
+        "/get-api-token": {
+            "get": {
+                "tags": [
+                    "Common API"
+                ],
+                "summary": "Get API Token",
+                "description": "Get API Token.",
+                "operationId": "get-api-token",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": {
+                    "$ref": "#/definitions/produces"
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/get-api-tokenResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized access",
+                        "schema": {
+                            "$ref": "#/definitions/parameters/commonError"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "produces": [
+            "application/json",
+            "application/xml",
+            "text/html"
+        ],
+        "parameters": {
+            "apiToken": {
+                "in": "header",
+                "name": "api_token",
+                "description": "API Token",
+                "required": true,
+                "type": "string"
+            },
+            "platform": {
+                "in": "header",
+                "name": "platform",
+                "description": "Request API Platform",
+                "required": true,
+                "type": "string",
+                "default": "ios"
+            },
+            "version": {
+                "in": "header",
+                "name": "version",
+                "description": "Mobile APP Version",
+                "required": true,
+                "type": "string",
+                "default": "1.0.0"
+            },
+            "loginToken": {
+                "in": "header",
+                "name": "x-access-token",
+                "description": "login token",
+                "required": true,
+                "type": "string"
+            },
+            "commonError": {
+                "in": "body",
+                "name": "commomError",
+                "description": "commonError",
+                "type": "object",
+                "example": {
+                    "status": false,
+                    "msg": "Unauthorized access.",
+                    "res": null,
+                    "errors": [
+                        "Please insert api token.",
+                        "Please insert source request platform.",
+                        "Please enter valid source request platform.",
+                        "Please insert mobile app version."
+                    ]
+                },
+                "properties": {
+                    "status": {
+                        "type": "boolean",
+                        "description": "false"
+                    },
+                    "msg": {
+                        "type": "string",
+                        "description": "Unauthorized access"
+                    }
+                }
+            }
+        },
+        "get-api-tokenResponse": {
+            "type": "object",
+            "example": {
+                "status": true,
+                "msg": "Get api token.",
+                "api_token": "PcYVAVH8hskXaqubl+tlIzvT0z84iOIa"
+            },
+            "properties": {
+                "status": {
+                    "type": "boolean",
+                    "description": true
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "Get api token"
+                },
+                "res": {
+                    "type": "object",
+                    "properties": {}
+                }
+            }
+        }
+    }
+}
