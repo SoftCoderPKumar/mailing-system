@@ -30,10 +30,11 @@ const config = {
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-            user: 'pappu.setrosoft@gmail.com', // generated ethereal user
-            pass: 'bdepataairbmdkid' // generated ethereal password   
+            user: 'setrosoft@gmail.com', // generated ethereal user
+            pass: '' // generated ethereal password   
         }
     }
 }
+
 
 module.exports = config;
