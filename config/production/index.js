@@ -21,7 +21,7 @@ const config = {
         connectionLimit: 5,
         host: 'sql12.freemysqlhosting.net',
         user: 'sql12610363',
-        password: 'FudhpugHLM',
+        password: '',
         database: 'sql12610363',
         multipleStatements: true
     },
@@ -38,3 +38,4 @@ const config = {
 
 
 module.exports = config;
+
